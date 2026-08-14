@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, MessageFlags } from "discord.js";
-import { addAccount, getStockCount } from "../db.js";
-import { isAdmin, parseLines } from "../utils.js";
+import { addAccount, getStockCount } from "./db.js";
+import { isAdmin, parseLines } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("uploadstock")

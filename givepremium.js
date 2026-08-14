@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, MessageFlags } from "discord.js";
-import { grantPremium } from "../db.js";
-import { buildPremiumEmbed, isAdmin, parseDurationDays } from "../utils.js";
+import { grantPremium } from "./db.js";
+import { buildPremiumEmbed, isAdmin, parseDurationDays } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("givepremium")

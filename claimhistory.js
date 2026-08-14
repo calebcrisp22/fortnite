@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import { getClaimHistory } from "../db.js";
+import { getClaimHistory } from "./db.js";
 
 export const data = new SlashCommandBuilder()
   .setName("claimhistory")

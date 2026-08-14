@@ -12,14 +12,14 @@ import {
   hasPremium,
   popAccount,
   setCooldown,
-} from "../db.js";
+} from "./db.js";
 import {
   buildAccountEmbed,
   createLockerCard,
   isAdmin,
   pagerRow,
   totalPages,
-} from "../utils.js";
+} from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("generate")

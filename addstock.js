@@ -6,8 +6,8 @@ import {
   ActionRowBuilder,
   MessageFlags,
 } from "discord.js";
-import { addAccount, getStockCount } from "../db.js";
-import { isAdmin, parseAccountInput } from "../utils.js";
+import { addAccount, getStockCount } from "./db.js";
+import { isAdmin, parseAccountInput } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("addstock")
