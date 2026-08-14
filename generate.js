@@ -33,10 +33,17 @@ export const data = new SlashCommandBuilder()
         { name: "Free", value: "free" },
         { name: "Premium", value: "premium" }
       )
+  )
+  .addAttachmentOption((option) =>
+    option
+      .setName("image")
+      .setDescription("Optional image to attach to the embed")
+      .setRequired(false)
   );
 
 export async function execute(interaction) {
   const tier = interaction.options.getString("category");
+  const imageAttachment = interaction.options.getAttachment("image");
   const settings = getSettings(interaction.guildId);
   const configuredChannel =
     tier === "premium"
@@ -90,6 +97,15 @@ export async function execute(interaction) {
     const dm = await interaction.user.createDM();
     const pages = totalPages(account);
     const dmCard = createLockerCard(account);
+    const files = [dmCard];
+    let imageReference = `attachment://${dmCard.name}`;
+
+    // Add user's image if provided
+    if (imageAttachment) {
+      files.push(imageAttachment);
+      imageReference = `attachment://${imageAttachment.name}`;
+    }
+
     const message = await dm.send({
       embeds: [
         buildAccountEmbed(
@@ -98,11 +114,11 @@ export async function execute(interaction) {
           0,
           false,
           "",
-          `attachment://${dmCard.name}`
+          imageReference
         ),
       ],
       components: [pagerRow(account.id, 0, pages)],
-      files: [dmCard],
+      files: files,
     });
 
     const collector = message.createMessageComponentCollector({
@@ -131,21 +147,21 @@ export async function execute(interaction) {
       });
     });
 
-    const publicCard = createLockerCard(account);
+    // Public message shows only who generated it, no details
     const publicEmbed = buildAccountEmbed(
       account,
       settings,
       0,
       true,
       `<@${interaction.user.id}>`,
-      `attachment://${publicCard.name}`
+      null // No image on public message
     );
     const logChannel = settings.log_channel_id
       ? await interaction.guild.channels.fetch(settings.log_channel_id).catch(() => null)
       : null;
     const publicChannel = logChannel ?? interaction.channel;
     if (publicChannel?.isTextBased()) {
-      await publicChannel.send({ embeds: [publicEmbed], files: [publicCard] });
+      await publicChannel.send({ embeds: [publicEmbed] });
     }
 
     await interaction.editReply({
@@ -157,3 +173,4 @@ export async function execute(interaction) {
     });
   }
 }
+
