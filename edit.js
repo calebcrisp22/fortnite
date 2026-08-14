@@ -6,8 +6,8 @@ import {
   ActionRowBuilder,
   MessageFlags,
 } from "discord.js";
-import { getSettings, setSetting } from "../db.js";
-import { isAdmin } from "../utils.js";
+import { getSettings, setSetting } from "./db.js";
+import { isAdmin } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("edit")

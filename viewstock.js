@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import { getStockCount } from "../db.js";
+import { getStockCount } from "./db.js";
 
 export const data = new SlashCommandBuilder()
   .setName("viewstock")

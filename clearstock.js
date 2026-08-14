@@ -5,8 +5,8 @@ import {
   ButtonStyle,
   MessageFlags,
 } from "discord.js";
-import { clearStock, getStockCount } from "../db.js";
-import { isAdmin } from "../utils.js";
+import { clearStock, getStockCount } from "./db.js";
+import { isAdmin } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("clearstock")

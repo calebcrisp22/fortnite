@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, EmbedBuilder, MessageFlags } from "discord.js";
-import { getStockCount } from "../db.js";
-import { isAdmin } from "../utils.js";
+import { getStockCount } from "./db.js";
+import { isAdmin } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("stock")

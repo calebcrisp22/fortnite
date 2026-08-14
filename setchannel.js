@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, MessageFlags } from "discord.js";
-import { setSetting } from "../db.js";
-import { isAdmin } from "../utils.js";
+import { setSetting } from "./db.js";
+import { isAdmin } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("setchannel")

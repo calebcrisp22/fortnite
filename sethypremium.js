@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, MessageFlags } from "discord.js";
-import { isAdmin } from "../utils.js";
+import { isAdmin } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("sethypremium")

@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, MessageFlags } from "discord.js";
-import { deleteAccountByEmail } from "../db.js";
-import { isAdmin } from "../utils.js";
+import { deleteAccountByEmail } from "./db.js";
+import { isAdmin } from "./utils.js";
 
 export const data = new SlashCommandBuilder()
   .setName("removestock")
