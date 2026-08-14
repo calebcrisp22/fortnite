@@ -15,7 +15,7 @@ if (!DISCORD_BOT_TOKEN || !CLIENT_ID) {
 
 const commands = [];
 
-const commandsPath = join(__dirname, "commands");
+const commandsPath = __dirname;
 const commandFiles = readdirSync(commandsPath).filter((f) => f.endsWith(".js"));
 
 for (const file of commandFiles) {
