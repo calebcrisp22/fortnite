@@ -21,7 +21,7 @@ client.commands = new Collection();
 
 // ── Load Commands ─────────────────────────────────────────────────────────────
 
-const commandsPath = join(__dirname, "commands");
+const commandsPath = __dirname;
 const commandFiles = readdirSync(commandsPath).filter((f) => f.endsWith(".js"));
 
 for (const file of commandFiles) {
