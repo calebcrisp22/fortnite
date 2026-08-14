@@ -4,6 +4,7 @@ import {
   ButtonBuilder,
   ButtonStyle,
   MessageFlags,
+  AttachmentBuilder,
 } from "discord.js";
 import {
   addClaim,
@@ -102,7 +103,12 @@ export async function execute(interaction) {
 
     // Add user's image if provided
     if (imageAttachment) {
-      files.push(imageAttachment);
+      const response = await fetch(imageAttachment.url);
+      const buffer = Buffer.from(await response.arrayBuffer());
+      const userImage = new AttachmentBuilder(buffer, {
+        name: imageAttachment.name,
+      });
+      files.push(userImage);
       imageReference = `attachment://${imageAttachment.name}`;
     }
 
