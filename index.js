@@ -23,7 +23,10 @@ client.commands = new Collection();
   // ── Load Commands ───────────────────────────────────────────────────────────
 
   const commandsPath = __dirname;
-  const commandFiles = readdirSync(commandsPath).filter((f) => f.endsWith(".js"));
+  const nonCommandFiles = ["db.js", "config.js", "utils.js", "deploy-commands.js", "index.js"];
+  const commandFiles = readdirSync(commandsPath).filter(
+    (f) => f.endsWith(".js") && !nonCommandFiles.includes(f)
+  );
 
   for (const file of commandFiles) {
     const filePath = pathToFileURL(join(commandsPath, file)).href;
